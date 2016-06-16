@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Layout from './components/Layout';
 
-const Text = ({ children }) => <h1>{children}</h1>;
-
-Text.propTypes = { children: React.PropTypes.string };
-Text.defaultProps = { children: 'default' };
+// The HTMLElement that React will render the app.
+const appElement = document.querySelector('#app');
 
 ReactDOM.render(
-  <Text>Hello world</Text>,
-  document.querySelector('#app')
+  <Layout content="Layout is coming up." />,
+  appElement
 );
