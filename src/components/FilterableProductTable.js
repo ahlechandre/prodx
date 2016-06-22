@@ -6,7 +6,7 @@ class FilterableProductTable extends Component {
   constructor() {
     super();
     this.state = {
-      filterText: 'all',
+      filterText: '',
       inStockOnly: false,
     };
     this.handleUserInput = this.handleUserInput.bind(this);
