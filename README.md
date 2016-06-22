@@ -1,10 +1,35 @@
-#Thinking in React
+#React Starter Kit
 
-The implementation of [thinking in react](https://facebook.github.io/react/docs/thinking-in-react.html) example using ES6 features.
+A basic React Starter Kit (Babel, ESLint, ReactJS, Webpack) for build with ES6 features.
 
-> React is, in my opinion, the premier way to build big, fast Web apps with JavaScript. It has scaled very well for us at Facebook and Instagram.
+##Packages
 
-> One of the many great parts of React is how it makes you think about apps as you build them. In this post, I'll walk you through the thought process of building a searchable product data table using React.
+###Babel
 
-> by Pete Hunt
+* babel-loader
+* babel-plugin-add-module-exports
+* babel-plugin-react-html-attrs
+* babel-plugin-transform-class-properties
+* babel-plugin-transform-decorators-legacy
+* babel-preset-es2015
+* babel-preset-react
+* babel-preset-stage-0
 
+###ESLint
+* eslint
+* eslint-config-airbnb
+* eslint-plugin-import
+* eslint-plugin-jsx-a11y
+* eslint-plugin-react
+
+###React
+* react
+* react-dom
+
+###Webpack
+* webpack
+* webpack-dev-server
+
+#License
+
+[MIT License](LICENSE) © 2016 Alexandre Thebaldi
