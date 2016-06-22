@@ -1,7 +1,7 @@
 {
-  "name": "react-starter-kit",
+  "name": "thinking-in-react",
   "version": "0.0.1",
-  "description": "",
+  "description": "A searchable product data table using React.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
