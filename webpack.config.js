@@ -1,4 +1,5 @@
 const debug = (process.env.NODE_ENV !== 'production');
+const path = require('path');
 const webpack = require('webpack');
 const devPlugins = [];
 const prodPlugins = [
@@ -15,8 +16,12 @@ module.exports = {
   devtool: debug ? 'inline-sourcemap' : null,
   entry: './src/app.js',
   output: {
-    path: __dirname,
+    path: path.resolve(__dirname, 'assets/'),
+    publicPath: '/assets/',
     filename: debug ? 'app.js' : 'app.min.js',
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   module: {
     loaders: [
