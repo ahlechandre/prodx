@@ -7,7 +7,6 @@ class PopularListContainer extends Component {
     this.items = [];
   }
 
-  // component lifecycle
   shouldComponentUpdate(nextProps) {
     return (typeof nextProps.data.shirts !== 'undefined');
   }

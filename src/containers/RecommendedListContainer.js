@@ -7,8 +7,6 @@ class RecommendedListContainer extends Component {
     this.items = [];
   }
 
-  // component lifecycle
-
   shouldComponentUpdate(nextProps) {
     return (typeof nextProps.data.recommendeds !== 'undefined');
   }
