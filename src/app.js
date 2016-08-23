@@ -1,29 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
-// import createBrowserHistory from 'history/lib/createBrowserHistory';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
-// Components
-import Layout from './components/Layout';
-import Home from './components/Pages/Home';
-import About from './components/Pages/About';
-import Items from './components/Pages/Items';
-import Item from './components/Pages/Item';
-import NotFound from './components/Pages/NotFound';
+// Layouts
+import App from './layouts/App';
+import BrowseLayout from './layouts/BrowseLayout';
+
+// Views
+import BrowseView from './views/BrowseView';
+import GenreView from './views/GenreView';
+import SearchView from './views/SearchView';
+import NotFoundView from './views/NotFoundView';
 
 // The HTMLElement that React will render the app.
 const appElement = document.querySelector('#app');
 
 ReactDOM.render(
   <Router history={browserHistory}>
-    <Route path="/" component={Layout}>
-      <IndexRoute component={Home} />
-      <Route path="about" component={About} />
-      <Route path="items" component={Items}>
-        <Route path=":id" component={Item} />
+    <Route path="/" component={App}>
+      <Route path="browse" component={BrowseLayout}>
+        <IndexRoute component={BrowseView} />
+        <Route path="genre/:id" component={GenreView} />
       </Route>
-      <Route path="*" component={NotFound} />
+      <Route path="search" component={SearchView} />
+      <Route path="*" component={NotFoundView} />
     </Route>
-  </Router>,
-  appElement
-);
+  </Router>
+  , appElement);

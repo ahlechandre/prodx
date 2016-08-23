@@ -1,0 +1,97 @@
+{
+  "shirts": [
+    {
+      "id": 1,
+      "title": "Shirt 1",
+      "description": "Description of shirt 1",
+      "price": 120,
+      "genres": [
+        1,
+        3
+      ],
+      "sales": 2149,
+      "views": 10239
+    },
+    {
+      "id": 2,
+      "title": "Shirt 2",
+      "description": "Description of shirt 2",
+      "price": 400,
+      "genres": [
+        4,
+        6
+      ],
+      "sales": 110,
+      "views": 2120
+    },
+    {
+      "id": 3,
+      "title": "Shirt 3",
+      "description": "Description of shirt 3",
+      "price": 50,
+      "genres": [
+        5,
+        3
+      ],
+      "sales": 5421,
+      "views": 20399
+    },
+    {
+      "id": 4,
+      "title": "Shirt 4",
+      "description": "Description of shirt 4",
+      "price": 750,
+      "genres": [
+        2,
+        6
+      ],
+      "sales": 43,
+      "views": 9000
+    },
+    {
+      "id": 5,
+      "title": "Shirt 5",
+      "description": "Description of shirt 5",
+      "price": 200,
+      "genres": [
+        1,
+        4
+      ],
+      "sales": 234,
+      "views": 5030
+    }
+  ],
+  "genres": [
+    {
+      "id": 1,
+      "title": "rap"
+    },
+    {
+      "id": 2,
+      "title": "rock"
+    },
+    {
+      "id": 3,
+      "title": "pop"
+    },
+    {
+      "id": 4,
+      "title": "country"
+    },
+    {
+      "id": 5,
+      "title": "latin"
+    },
+    {
+      "id": 6,
+      "title": "metal"
+    }
+  ],
+  "recommendeds": [
+    1,
+    4,
+    5,
+    2,
+    3
+  ]
+}
