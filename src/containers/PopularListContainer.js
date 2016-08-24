@@ -7,9 +7,12 @@ class PopularListContainer extends Component {
     this.items = [];
   }
 
-  shouldComponentUpdate(nextProps) {
-    return (typeof nextProps.data.shirts !== 'undefined');
-  }
+  // shouldComponentUpdate(nextProps) {
+  //   return (
+  //     !Object.keys(nextProps.expanded).length ||
+  //     (nextProps.listId === nextProps.expanded.listId)
+  //   );
+  // }
 
   componentWillUpdate(nextProps) {
     const { shirts } = nextProps.data;
@@ -22,13 +25,18 @@ class PopularListContainer extends Component {
         title="Popular on Prodx"
         items={this.items}
         onShirtExpand={this.props.onShirtExpand}
+        listId={this.props.listId}
+        expanded={this.props.expanded}
       />
     );
   }
 }
 
 PopularListContainer.propTypes = {
+  data: PropTypes.object,
   onShirtExpand: PropTypes.func,
+  listId: PropTypes.number,
+  expanded: PropTypes.object,
 };
 
 export default PopularListContainer;

@@ -7,9 +7,12 @@ class RecommendedListContainer extends Component {
     this.items = [];
   }
 
-  shouldComponentUpdate(nextProps) {
-    return (typeof nextProps.data.recommendeds !== 'undefined');
-  }
+  // shouldComponentUpdate(nextProps) {
+  //   return (
+  //     !Object.keys(nextProps.expanded).length ||
+  //     (nextProps.listId === nextProps.expanded.listId)
+  //   );
+  // }
 
   componentWillUpdate(nextProps) {
     const { recommendeds, shirts } = nextProps.data;
@@ -29,6 +32,8 @@ class RecommendedListContainer extends Component {
         title="Recommended for you"
         items={this.items}
         onShirtExpand={this.props.onShirtExpand}
+        listId={this.props.listId}
+        expanded={this.props.expanded}
       />
     );
   }
@@ -37,6 +42,8 @@ class RecommendedListContainer extends Component {
 RecommendedListContainer.propTypes = {
   data: PropTypes.object,
   onShirtExpand: PropTypes.func,
+  listId: PropTypes.number,
+  expanded: PropTypes.object,
 };
 
 export default RecommendedListContainer;

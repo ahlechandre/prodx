@@ -9,9 +9,14 @@ class BrowseView extends Component {
     this.state = {
       dataReady: false,
       hasExpanded: false,
+      expanded: {},
     };
     this.data = {};
     this.onShirtExpand = this.onShirtExpand.bind(this);
+    this.shirtLists = {
+      popular: 1,
+      recommended: 2,
+    };
   }
 
   componentDidMount() {
@@ -34,15 +39,31 @@ class BrowseView extends Component {
     this.setState(nextState);
   }
 
-  onShirtExpand(id, event) {
-    console.log(id, event);
+  onShirtExpand(listId, shirtId, isExpanded) {
+    const nextState = _.cloneDeep(this.state);
+    nextState.hasExpanded = !isExpanded;
+    nextState.expanded = isExpanded ? {} : {
+      listId,
+      shirtId,
+    };
+    this.setState(nextState);
   }
 
   render() {
     return (
       <section>
-        <PopularListContainer data={this.data} onShirtExpand={this.onShirtExpand} />
-        <RecommendedListContainer data={this.data} onShirtExpand={this.onShirtExpand} />
+        <PopularListContainer
+          data={this.data}
+          onShirtExpand={this.onShirtExpand}
+          listId={this.shirtLists.popular}
+          expanded={this.state.expanded}
+        />
+        <RecommendedListContainer
+          data={this.data}
+          onShirtExpand={this.onShirtExpand}
+          listId={this.shirtLists.recommended}
+          expanded={this.state.expanded}
+        />
       </section>
     );
   }
