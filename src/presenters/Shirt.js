@@ -1,51 +1,33 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
-const Shirt = ({ item, clickHandler, isExpanded }) => {
+const Shirt = ({ item, onShirtExpand }) => {
   const hasContent = Object.keys(item).length;
   const itemStyle = {
-    'list-style': 'none',
+    listStyle: 'none',
     width: '100%',
-    'max-width': '120px',
+    maxWidth: '120px',
     height: '200px',
-    'background-color': (() => {
-      let color = '#999';
-      if (hasContent) {
-        if (isExpanded) color = '#303F9F';
-        else color = '#3F51B5';
-      }
-      return color;
-    })(),
-    color: (hasContent ? 'white' : '#222'),
+    backgroundColor: (hasContent ? '#3F51B5' : '#303F9F'),
+    color: 'white',
     padding: '16px',
   };
-  let itemContent = {};
-
-  if (hasContent) {
-    itemContent = (
-      <div>
-        <h1>{item.title}</h1>
-        <p>{`$${item.price}`}</p>
-        {(() => {
-          let details = null;
-          if (isExpanded) {
-            details = (
-              <div>
-                <p>{item.description}</p>
-                <p>{item.views} views</p>
-                <p>{item.sales} sales</p>
-              </div>
-            );
-          }
-          return details;
-        })()}
-      </div>
-    );
-  } else {
-    itemContent = '';
-  }
+  const itemContent = hasContent ?
+    (<div>
+      <h1>{item.title}</h1>
+      <p>{`$${item.price}`}</p>
+      <p>
+        <Link
+          class="btn"
+          to={`/browse/shirt/${item.id}`}
+          onClick={onShirtExpand}
+        >Details</Link>
+      </p>
+    </div>) :
+    '';
 
   return (
-    <li data-item-id={item.id} style={itemStyle} onClick={clickHandler}>
+    <li key={item.id} style={itemStyle}>
       {itemContent}
     </li>
   );
@@ -53,8 +35,7 @@ const Shirt = ({ item, clickHandler, isExpanded }) => {
 
 Shirt.propTypes = {
   item: PropTypes.object,
-  clickHandler: PropTypes.func,
-  isExpanded: PropTypes.bool,
+  onShirtExpand: PropTypes.func,
 };
 
 export default Shirt;

@@ -24,12 +24,19 @@ class RecommendedListContainer extends Component {
   }
 
   render() {
-    return (<ShirtList title="Recommended for you" items={this.items} />);
+    return (
+      <ShirtList
+        title="Recommended for you"
+        items={this.items}
+        onShirtExpand={this.props.onShirtExpand}
+      />
+    );
   }
 }
 
 RecommendedListContainer.propTypes = {
   data: PropTypes.object,
+  onShirtExpand: PropTypes.func,
 };
 
 export default RecommendedListContainer;

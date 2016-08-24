@@ -7,8 +7,8 @@ const BrowseLayout = ({ children }) =>
     <section
       style={{
         display: 'flex',
-        'flex-flow': 'column wrap',
-        'max-width': '900px',
+        flexFlow: 'column wrap',
+        maxWidth: '900px',
         margin: 'auto',
       }}
     >

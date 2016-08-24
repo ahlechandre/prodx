@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import ShirtList from '../presenters/ShirtList';
 
 class PopularListContainer extends Component {
@@ -17,8 +17,18 @@ class PopularListContainer extends Component {
   }
 
   render() {
-    return (<ShirtList title="Popular on Prodx" items={this.items} />);
+    return (
+      <ShirtList
+        title="Popular on Prodx"
+        items={this.items}
+        onShirtExpand={this.props.onShirtExpand}
+      />
+    );
   }
 }
+
+PopularListContainer.propTypes = {
+  onShirtExpand: PropTypes.func,
+};
 
 export default PopularListContainer;
