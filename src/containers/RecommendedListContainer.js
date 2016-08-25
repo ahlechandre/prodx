@@ -1,42 +1,26 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import ShirtList from '../presenters/ShirtList';
 
-class RecommendedListContainer extends Component {
-  constructor() {
-    super();
-    this.items = [];
-  }
-
-  // shouldComponentUpdate(nextProps) {
-  //   return (
-  //     !Object.keys(nextProps.expanded).length ||
-  //     (nextProps.listId === nextProps.expanded.listId)
-  //   );
-  // }
-
-  componentWillUpdate(nextProps) {
-    const { recommendeds, shirts } = nextProps.data;
-    this.items = recommendeds.map((id) => {
-      let recommended = {};
-      shirts.some((shirt) => {
-        recommended = shirt;
-        return shirt.id === id;
-      });
-      return recommended;
+const RecommendedListContainer = ({ data, listId, expanded }) => {
+  const { recommendeds, shirts } = data;
+  const items = recommendeds.map((id) => {
+    let recommended = {};
+    shirts.some((shirt) => {
+      recommended = shirt;
+      return shirt.id === id;
     });
-  }
+    return recommended;
+  });
 
-  render() {
-    return (
-      <ShirtList
-        title="Recommended for you"
-        items={this.items}
-        listId={this.props.listId}
-        expanded={this.props.expanded}
-      />
-    );
-  }
-}
+  return (
+    <ShirtList
+      title="Recommended for you"
+      items={items}
+      listId={listId}
+      expanded={expanded}
+    />
+  );
+};
 
 RecommendedListContainer.propTypes = {
   data: PropTypes.object,

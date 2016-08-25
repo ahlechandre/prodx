@@ -10,6 +10,7 @@ import BrowseLayout from './layouts/BrowseLayout';
 import BrowseView from './views/BrowseView';
 import GenreView from './views/GenreView';
 import SearchView from './views/SearchView';
+import ShirtView from './views/ShirtView';
 import NotFoundView from './views/NotFoundView';
 
 // The HTMLElement that React will render the app.
@@ -24,7 +25,7 @@ ReactDOM.render(
         <Route path="shirt/:id" component={BrowseView} />
         <Route path="genre/:id" component={GenreView} />
       </Route>
-      <Route path="shirt/:id" component={BrowseView} />
+      <Route path="shirt/:id" component={ShirtView} />
       <Route path="search" component={SearchView} />
       <Route path="*" component={NotFoundView} />
     </Route>
