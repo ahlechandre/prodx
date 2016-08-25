@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-const Shirt = ({ item, onShirtExpand, isExpanded }) => {
+const Shirt = ({ item, isExpanded, listId }) => {
   const hasContent = Object.keys(item).length;
   const itemStyle = {
     listStyle: 'none',
@@ -27,7 +27,6 @@ const Shirt = ({ item, onShirtExpand, isExpanded }) => {
       <p>{`$${item.price}`}</p>
       {(() => {
         let expandControl = {};
-        const onShirtExpandBound = onShirtExpand.bind(this, isExpanded);
         if (isExpanded) {
           expandControl = (
             <div>
@@ -38,7 +37,6 @@ const Shirt = ({ item, onShirtExpand, isExpanded }) => {
                 <Link
                   class="btn"
                   to="/browse"
-                  onClick={onShirtExpandBound}
                 >Close</Link>
               </p>
             </div>
@@ -48,8 +46,15 @@ const Shirt = ({ item, onShirtExpand, isExpanded }) => {
             <p>
               <Link
                 class="btn"
-                to={`/browse/shirt/${item.id}`}
-                onClick={onShirtExpandBound}
+                to={{
+                  pathname: `/browse/shirt/${item.id}`,
+                  state: {
+                    expanded: {
+                      listId,
+                      shirtId: item.id,
+                    },
+                  },
+                }}
               >Details</Link>
             </p>
           );
@@ -71,8 +76,8 @@ const Shirt = ({ item, onShirtExpand, isExpanded }) => {
 
 Shirt.propTypes = {
   item: PropTypes.object,
-  onShirtExpand: PropTypes.func,
   isExpanded: PropTypes.bool,
+  listId: PropTypes.number,
 };
 
 export default Shirt;

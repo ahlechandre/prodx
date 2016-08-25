@@ -31,7 +31,6 @@ class RecommendedListContainer extends Component {
       <ShirtList
         title="Recommended for you"
         items={this.items}
-        onShirtExpand={this.props.onShirtExpand}
         listId={this.props.listId}
         expanded={this.props.expanded}
       />
@@ -41,7 +40,6 @@ class RecommendedListContainer extends Component {
 
 RecommendedListContainer.propTypes = {
   data: PropTypes.object,
-  onShirtExpand: PropTypes.func,
   listId: PropTypes.number,
   expanded: PropTypes.object,
 };

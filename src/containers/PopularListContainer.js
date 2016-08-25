@@ -24,7 +24,6 @@ class PopularListContainer extends Component {
       <ShirtList
         title="Popular on Prodx"
         items={this.items}
-        onShirtExpand={this.props.onShirtExpand}
         listId={this.props.listId}
         expanded={this.props.expanded}
       />
@@ -34,7 +33,6 @@ class PopularListContainer extends Component {
 
 PopularListContainer.propTypes = {
   data: PropTypes.object,
-  onShirtExpand: PropTypes.func,
   listId: PropTypes.number,
   expanded: PropTypes.object,
 };

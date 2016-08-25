@@ -12,11 +12,18 @@ class BrowseView extends Component {
       expanded: {},
     };
     this.data = {};
-    this.onShirtExpand = this.onShirtExpand.bind(this);
     this.shirtLists = {
       popular: 1,
       recommended: 2,
     };
+  }
+
+  componentWillMount() {
+    const { route, params } = this.props;
+    const shirtPath = 'shirt/:id';
+    if ((route.path && route.path === shirtPath) && params.id) {
+      console.warn(`should redirect to shirt ${params.id} page`);
+    }
   }
 
   componentDidMount() {
@@ -26,6 +33,22 @@ class BrowseView extends Component {
         this.onDataReady(response);
       });
     });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { location, route } = nextProps;
+    const nextState = _.cloneDeep(this.state);
+    const shirtPath = 'shirt/:id';
+    if ((route.path && route.path === shirtPath)) {
+      // there is some expanded shirt
+      nextState.hasExpanded = true;
+      nextState.expanded = location.state.expanded;
+    } else {
+      // nothing else browse
+      nextState.hasExpanded = false;
+      nextState.expanded = {};
+    }
+    this.setState(nextState);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -39,28 +62,16 @@ class BrowseView extends Component {
     this.setState(nextState);
   }
 
-  onShirtExpand(listId, shirtId, isExpanded) {
-    const nextState = _.cloneDeep(this.state);
-    nextState.hasExpanded = !isExpanded;
-    nextState.expanded = isExpanded ? {} : {
-      listId,
-      shirtId,
-    };
-    this.setState(nextState);
-  }
-
   render() {
     return (
       <section>
         <PopularListContainer
           data={this.data}
-          onShirtExpand={this.onShirtExpand}
           listId={this.shirtLists.popular}
           expanded={this.state.expanded}
         />
         <RecommendedListContainer
           data={this.data}
-          onShirtExpand={this.onShirtExpand}
           listId={this.shirtLists.recommended}
           expanded={this.state.expanded}
         />
@@ -71,6 +82,12 @@ class BrowseView extends Component {
 
 BrowseView.contextTypes = {
   router: PropTypes.object,
+};
+
+BrowseView.propTypes = {
+  location: PropTypes.object,
+  params: PropTypes.object,
+  route: PropTypes.object,
 };
 
 export default BrowseView;
